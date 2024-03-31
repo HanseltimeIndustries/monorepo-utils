@@ -1,9 +1,9 @@
 {
-  "name": "@hanseltime/your-package-here",
-  "description": "add your description here",
+  "name": "@hanseltime/monorepo-utils",
+  "description": "Utilities for a typescript monorepo pattern",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HanseltimeIndustries/your-repo-here.git"
+    "url": "https://github.com/HanseltimeIndustries/monorepo-utils.git"
   },
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/index.js",
