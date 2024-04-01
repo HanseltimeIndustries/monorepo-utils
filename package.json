@@ -13,6 +13,9 @@
     "import": "./dist/esm/index.js",
     "default": "./dist/esm/index.js"
   },
+  "bin": {
+    "same-version-check": "dist-bin/same-version-check.js"
+  },
   "files": [
     "dist"
   ],
@@ -25,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "commitlint": "^18.4.3",
+    "esbuild": "^0.20.2",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
@@ -42,7 +46,8 @@
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json",
-    "build": "tsc -b tsconfig.cjs.json tsconfig.esm.json tsconfig.types.json",
+    "build": "yarn build:cjs && yarn build:esm && yarn build:types && yarn build-bin",
+    "build-bin": "esbuild src/bin/same-version-check.ts --bundle --platform=node --target=node18 --outdir=dist-bin",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
@@ -55,5 +60,8 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@3.8.1"
+  "packageManager": "yarn@3.8.1",
+  "dependencies": {
+    "commander": "^12.0.0"
+  }
 }
